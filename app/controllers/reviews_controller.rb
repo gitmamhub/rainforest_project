@@ -15,8 +15,8 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
+    @product = Product.find(params[:product_id]) #inner path
+    @review = Review.find(params[:id])  #outer path
   end
 
   def update
@@ -37,9 +37,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     if @review.destroy
-    redirect_to "/products/#{@product.id}"
+      redirect_to "/products/#{@product.id}"
+    end
   end
-
-end
 
 end

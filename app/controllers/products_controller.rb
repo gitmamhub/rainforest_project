@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @review = Review.new
+    @review = Review.new #needs to be here bc reviews shown on the product.show page
   end
 
   def new
@@ -18,10 +18,10 @@ class ProductsController < ApplicationController
     @product.description = params[:product][:description]
     @product.price_in_cents = params[:product][:price_in_cents]
     if @product.save
-        flash[:notice] = "Product saved !"
-       redirect_to '/products'
+      flash[:notice] = "Product saved !"
+      redirect_to products_path
      else
-       render :new
+      render :new
     end
 
   end
@@ -37,9 +37,9 @@ class ProductsController < ApplicationController
     @product.price_in_cents = params[:product][:price_in_cents]
     if @product.save
       flash[:notice] = "Product updated !"
-       redirect_to "/products/#{@product.id}"
+      redirect_to "/products/#{@product.id}"
      else
-       render :edit
+      render :edit
     end
 
 
@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     @product.destroy
     if @product.destroy
       flash[:notice] = "Product Deleted !"
-    redirect_to "/products"
+      redirect_to products_path
     end
   end
 end

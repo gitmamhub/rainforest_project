@@ -24,6 +24,6 @@ Product.create(
   price_in_cents: 100 )
 
 Product.create(
-  name: 'channeln5',
+  name: 'channel_n5',
   description: 'perfume',
   price_in_cents: 1000 )
